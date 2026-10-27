@@ -1,28 +1,17 @@
+#include "lexer.hpp"
+
 #include <iostream>
 #include <string>
 
 int main() {
 	std::string input;
 
-	while (true) {
-		std::cout << "bssh> " << std::flush;
-
-		if (!std::getline(std::cin, input)) {
-			std::cout << '\n';
-			break;
+	while (std::getline(std::cin, input)) {
+		const auto tokens = bssh::tokenize(input);
+		
+		for (const auto token : tokens) {
+			std::cout << '[' << token << "]\n";
 		}
-
-		if (input == "exit") {
-			break;
-		}
-
-		if (input.empty()) {
-			break;
-		}
-
-		std::cout << "You entered: " << input << '\n';
 	}
-
-	return 0;
 }
 

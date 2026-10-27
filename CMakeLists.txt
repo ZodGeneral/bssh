@@ -12,7 +12,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(bssh
 	src/main.cpp
+	src/lexer.cpp
 )
+
+target_include_directories(bssh PRIVATE include)
 
 target_compile_options(bssh PRIVATE
 	-Wall
