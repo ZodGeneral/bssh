@@ -1,0 +1,18 @@
+# Build artifacts
+build/
+cmake-build-*/
+out/
+
+# macOS
+.DS_Store
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Compiled files
+*.o
+*.a
+*.dylib
+
