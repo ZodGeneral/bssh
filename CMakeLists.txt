@@ -24,3 +24,35 @@ target_compile_options(bssh PRIVATE
 	-Wconversion
 	-Wshadow
 )
+
+include(FetchContent)
+
+FetchContent_Declare(
+	googletest
+	GIT_REPOSITORY https://github.com/google/googletest.git
+	GIT_TAG v1.17.0
+)
+
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(lexer_tests
+	tests/lexer_tests.cpp
+	src/lexer.cpp
+)
+
+target_include_directories(lexer_tests PRIVATE include)
+
+target_link_libraries(lexer_tests PRIVATE GTest::gtest_main)
+
+target_compile_options(lexer_tests PRIVATE
+	-Wall
+	-Wextra
+	-Wpedantic
+	-Wconversion
+	-Wshadow
+)
+
+include(GoogleTest)
+gtest_discover_tests(lexer_tests)
